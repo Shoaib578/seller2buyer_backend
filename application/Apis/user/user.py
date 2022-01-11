@@ -12,8 +12,8 @@ import smtplib
 import random
 import requests
 
-account_sid = ''
-auth_token = ''
+account_sid = 'ACd820a45f33eb7218a944714763d8dbbb'
+auth_token = 'b60b8a0b7ad5c7550063858bef9506ee'
 client = Client(account_sid, auth_token)
 
 
