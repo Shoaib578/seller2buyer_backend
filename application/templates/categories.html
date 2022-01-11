@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block head%}
+<title>Admin-Home</title>
+{% endblock %}
+
+{% block body%}
+
+    <div >
+        <h1>Categories</h1>
+        <div class="form-outline mt-4">
+            <form method="POST" action="{{url_for('admin.add_category')}}" class="d-flex">
+            <input type="text" name="category_name" id="form12" placeholder="Enter Category Name" class="form-control" />
+            <button class="btn btn-primary ml-4">Add</button>
+           </form>
+        </div>
+
+        <table class="table mt-4">
+            <thead>
+              <tr>
+                <th scope="col">Category Name</th>
+                <th scope="col">Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for category in all_categories%}
+              <tr>
+                <td>{{category.category_name}}</td>
+                <td>
+                    <form method="POST" action="{{url_for('admin.delete_category', id=category.category_id)}}">
+                        <button name="" class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
+
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+
+
+{% endblock %}

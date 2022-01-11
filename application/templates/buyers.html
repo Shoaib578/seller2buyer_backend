@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block head%}
+<title>Admin-Home</title>
+{% endblock %}
+
+{% block body%}
+
+    <div >
+      
+        <h1>We Have {{buyers_count}} Active Buyers </h1>
+       
+
+        <table class="table mt-4">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+             
+                <th scope="col">Phone Number</th>
+
+                <th scope="col">Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for buyer in all_buyers %}
+              <tr>
+                <td>{{buyer.id}}</td>
+
+                <td>{{buyer.firstname}}</td>
+                <td>{{buyer.lastname}}</td>
+          
+                <td>{{buyer.phone_no}}</td>
+
+                <td>
+                    <form method="POST" action="{{url_for('admin.delete_buyer', id=buyer.id)}}">
+                        <button  name="" class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
+
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+
+
+{% endblock %}

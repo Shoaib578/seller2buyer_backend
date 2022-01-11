@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block head%}
+<title>Admin-Home</title>
+{% endblock %}
+
+{% block body%}
+
+    <div >
+        <h1>We Have {{ products_count }} Products </h1>
+
+        <table class="table mt-4">
+            <thead>
+              <tr>
+                <th scope="col">Product Id</th>
+                <th scope="col">Posted By</th>
+                <th scope="col">Product Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Tags</th>
+                <th scope="col">Image</th>
+                <th scope="col">Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for product in all_products %}
+              <tr>
+                <td>{{product.product_id}}</td>
+                <td>{{product.posted_by}}</td>
+                <td>{{product.product_name}}</td>
+                <td>{{product.price}}</td>
+                <td>{{product.tags}}</td>
+                <td><img style="height: 35px; width: 35px; border-radius:5px; border: 1px solid #fff; object-fit:cover;" 
+                    src="{{url_for('static', filename='uploads/')}}{{product.product_picture1}}"></td>
+                <td>
+                    <form method="POST" action="{{url_for('admin.delete_product', id=product.product_id)}}">
+                        <button name="" class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
+
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+
+
+{% endblock %}

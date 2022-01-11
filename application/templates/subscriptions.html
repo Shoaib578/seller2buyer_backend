@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block head%}
+<title>Admin-Home</title>
+{% endblock %}
+
+{% block body%}
+
+    <div >
+        <h1>Subscriptions</h1>
+        <div class="form-outline mt-4">
+            <form method="POST" action="{{url_for('admin.Subscription')}}" >
+            <input type="number" name="duration" style="width:300px" id="form11" placeholder="Enter Subscription Duration in Days" class="form-control" />
+            <br>
+            
+            <input type="number" name="price" style="width:300px" id="form12" placeholder="Enter Subscription Price" class="form-control" />
+            <br>
+
+            <button class="btn btn-primary">Add</button>
+           </form>
+        </div>
+
+        <table class="table mt-4">
+            <thead>
+              <tr>
+                <th scope="col">Duration Days</th>
+                <th scope="col">Price</th>
+
+                <th scope="col">Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for subscription in subscriptions%}
+              <tr>
+                <td>{{subscription.duration}}</td>
+                <td>{{subscription.price}}</td>
+
+                <td>
+                    <form method="POST" action="{{url_for('admin.DeleteSubscription', id=subscription.subscription_id)}}">
+                        <button name="" class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
+
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+
+
+{% endblock %}

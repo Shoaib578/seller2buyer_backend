@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block head%}
+<title>Admin-Home</title>
+{% endblock %}
+
+{% block body%}
+
+    <div >
+        <h1>We Have {{ orders_count }} Placed Orders</h1>
+
+        <table class="table mt-4">
+            <thead>
+              <tr>
+                <th scope="col">Order ID</th>
+                <th scope="col">Placed By</th>
+                <th scope="col">Product ID</th>
+              
+                <th scope="col">Posted Date</th>
+                <th scope="col">Address</th>
+                <th scope="col">Amount</th>
+               
+               
+              </tr>
+            </thead>
+            <tbody>
+            {% for order in orders %}
+              <tr>
+                <td>{{order.placed_order_id}}</td>
+                <td>{{order.placed_by}}</td>
+                <td>{{order.order_product_id}}</td>
+                <td>{{order.posted_date}}</td>
+               
+                <td>{{order.placed_order_address}}</td>
+                <td>{{order.quantity}}</td>
+              
+            
+
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+
+
+{% endblock %}
