@@ -188,7 +188,8 @@ def CheckMySubscription():
 def BuySubscription():
     user_id = request.form.get('user_id')
     duration = request.form.get('duration')
-    subscription = text("INSERT INTO user_subscription(user_id,start_date,expiration_date) VALUES("+str(user_id)+",NOW(),DATE_ADD(NOW(), INTERVAL "+str(duration)+" DAY) )")
+    # DATE_ADD(NOW(), INTERVAL "+str(duration)+" DAY)
+    subscription = text("INSERT INTO user_subscription(user_id,start_date,expiration_date) VALUES("+str(user_id)+",NOW(),DATE_TRUNC('DAY',NOW())+INTERVAL '30 DAY' )")
     engine = db.engine.execute(subscription)
     return jsonify({
         "msg":"You Have Bought Subscription Successfully",
