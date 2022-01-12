@@ -197,7 +197,7 @@ def BuySubscription():
 
 def GetMySubscription():
     user_id =request.args.get('user_id')
-    subscription = text("select  DATE_PART(expiration_date,NOW()) AS remaing_time, expiration_date,start_date,user_subscription_id   from  user_subscription  where user_id="+str(user_id)+" AND NOW() <= DATE(expiration_date) ")
+    subscription = text("select  DATEDIFF(expiration_date-NOW()) AS remaing_time, expiration_date,start_date,user_subscription_id   from  user_subscription  where user_id="+str(user_id)+" AND NOW() <= DATE(expiration_date) ")
     engine = db.engine.execute(subscription)
     user_subscription_schema = UserSubscriptionSchema(many=True)
     sub = user_subscription_schema.dump(engine)
