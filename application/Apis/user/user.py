@@ -126,7 +126,7 @@ def ForgotPassword():
     if user:
         message = client.messages.create(
         
-            from_='whatsapp:14155238886',
+            from_='whatsapp:+14155238886',
             body="Your Seller2Buyer App varification code is "+str(random_v),
             to='whatsapp:'+str(phone_no)
             )
