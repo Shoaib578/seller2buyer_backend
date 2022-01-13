@@ -83,7 +83,7 @@ def SendOTP():
         message = client.messages.create(
         
             from_='whatsapp:14155238886',
-            body="Your Manish App varification code is "+str(random_v),
+            body="Your Seller2Buyer App varification code is "+str(random_v),
             to='whatsapp:'+str(phone_no)
             )
         return jsonify({
@@ -127,7 +127,7 @@ def ForgotPassword():
         message = client.messages.create(
         
             from_='whatsapp:14155238886',
-            body="Your Manish App varification code is "+str(random_v),
+            body="Your Seller2Buyer App varification code is "+str(random_v),
             to='whatsapp:'+str(phone_no)
             )
         return jsonify({
