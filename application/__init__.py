@@ -6,10 +6,10 @@ from flask_marshmallow import Marshmallow
 
 import os
 app = Flask(__name__)
-# app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
-# app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL').replace('postgres://', 'postgresql://')
-app.config['SECRET_KEY'] = 'asjd9792nasd887a8dA'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@localhost/seller2buyer'
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL').replace('postgres://', 'postgresql://')
+# app.config['SECRET_KEY'] = 'asjd9792nasd887a8dA'
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@localhost/seller2buyer'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 login_manager = LoginManager(app)
 login_manager.login_view = 'admin.Login'
