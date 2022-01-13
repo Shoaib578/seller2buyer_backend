@@ -13,7 +13,7 @@ import random
 import requests
 
 account_sid = 'ACd820a45f33eb7218a944714763d8dbbb'
-auth_token = 'b60b8a0b7ad5c7550063858bef9506ee'
+auth_token = '2169791b6fce728ac93913e48a3c1509'
 client = Client(account_sid, auth_token)
 
 
